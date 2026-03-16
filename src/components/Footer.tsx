@@ -9,7 +9,7 @@ const Footer = () => (
           <Link to="/">
           <div className="flex items-center gap-3 mb-0">
             <img
-              src="/images/Voxentro.png"
+              src="/images/voxco.png"
               alt="Voxentro Consulting"
               className="h-24 w-auto"
             />
@@ -93,7 +93,7 @@ const Footer = () => (
       </div>
 
       <div className="mt-12 pt-8 border-t border-border/30 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-        <p>© 2025 Voxentro Consulting. All rights reserved.</p>
+        <p>© 2026 Voxentro Consulting. All rights reserved.</p>
         <div className="flex gap-6">
           <Link to="/privacy-policy" className="hover:text-foreground transition-colors duration-200">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-foreground transition-colors duration-200">Terms of Service</Link>

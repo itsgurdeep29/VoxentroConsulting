@@ -10,6 +10,7 @@ import Services from "@/pages/Services";
 import Solutions from "@/pages/Solutions";
 import Contact from "@/pages/Contact";
 import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 import Partners from "@/pages/Partners";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Terms from "@/pages/Terms";
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/partners" element={<Partners />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/thank-you" element={<ThankYou />} />

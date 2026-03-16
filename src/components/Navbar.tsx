@@ -27,6 +27,7 @@ const Navbar = () => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -34,7 +35,8 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActive = (href: string) => location.pathname === href || location.pathname.startsWith(href + "/");
+  const isActive = (href: string) =>
+    location.pathname === href || location.pathname.startsWith(href + "/");
 
   return (
     <motion.nav
@@ -47,19 +49,14 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container-wide flex items-center justify-between h-16 lg:h-20 px-4 sm:px-6 lg:px-8">
-      <Link to="/" className="flex items-center gap-3 group">
-      <div className="w-40 h-40 overflow-hidden flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
-        <img
-          src="/images/Voxentro.png"
-          alt="Voxentro Consulting"
-          className="w-full h-full object-contain"
-        />
-      </div>
-    </Link>
-
-
-
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-[80px] lg:h-[90px] px-4 sm:px-6 lg:px-8">
+        <Link to="/" className="flex items-center group">
+          <img
+            src="/images/voxco.png"
+            alt="Voxentro Consulting"
+            className="h-20 lg:h-[92px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        </Link>
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-0.5">
@@ -80,7 +77,11 @@ const Navbar = () => {
                   }`}
                 >
                   {link.name}
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-300 ${
+                      servicesOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </Link>
                 <AnimatePresence>
                   {servicesOpen && (
@@ -126,39 +127,81 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile toggle */}
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="lg:hidden p-2 text-foreground">
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="lg:hidden p-2 text-foreground"
+        >
+          {mobileOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="lg:hidden glass-card border-t border-border/50 overflow-hidden"
+            transition={{ duration: 0.3 }}
+            className="lg:hidden glass-card border-t border-border/50"
           >
             <div className="p-4 space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`block px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    isActive(link.href) ? "text-accent bg-muted" : "text-foreground/70 hover:bg-muted hover:text-foreground"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.dropdown ? (
+                  <div key={link.name}>
+                    <button
+                      onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                      className="flex items-center justify-between w-full px-4 py-3 rounded-lg text-sm font-medium text-foreground/70 hover:bg-muted"
+                    >
+                      {link.name}
+                      <ChevronDown
+                        className={`w-4 h-4 transition-transform ${
+                          mobileServicesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {mobileServicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          className="ml-4"
+                        >
+                          {services.map((service) => (
+                            <Link
+                              key={service.name}
+                              to={service.href}
+                              onClick={() => setMobileOpen(false)}
+                              className="block px-4 py-2 text-sm text-foreground/70 hover:text-foreground"
+                            >
+                              {service.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block px-4 py-3 rounded-lg text-sm font-medium text-foreground/70 hover:bg-muted hover:text-foreground"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
+
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
-                className="block mt-2 px-4 py-3 rounded-xl gradient-accent text-accent-foreground text-sm font-semibold text-center"
+                className="block mt-3 px-4 py-3 rounded-xl gradient-accent text-accent-foreground text-sm font-semibold text-center"
               >
                 Get Started
               </Link>

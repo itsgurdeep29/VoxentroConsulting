@@ -67,10 +67,10 @@ const services = [
 ];
 
 const stats = [
-  { value: "500+", label: "Global Clients" },
+  { value: "60+", label: "Global Clients" },
   { value: "98%", label: "Client Retention" },
   { value: "25+", label: "Countries Served" },
-  { value: "10M+", label: "Calls Processed" },
+  { value: "10k+", label: "Calls Processed" },
 ];
 
 const whyUs = [
@@ -141,7 +141,7 @@ const testimonials = [
   },
 ];
 
-const partners = ["Zoho", "Teleforce", "TeleCMI", "CRMgrow", "Salesforce"];
+const partners = ["Zoho", "Yellow Buddy", "TeleCMI", "CRMgrow", "SalesNayak", "WaGuru"];
 
 const Home = () => (
   <>

@@ -19,7 +19,7 @@ const Terms = () => (
       <div className="container-wide relative z-10">
         <ScrollReveal>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4">Terms & Conditions</h1>
-          <p className="text-muted-foreground">Last updated: March 2025</p>
+          <p className="text-muted-foreground">Last updated: March 2026</p>
         </ScrollReveal>
       </div>
     </section>

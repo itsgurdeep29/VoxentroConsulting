@@ -58,10 +58,10 @@ const Contact = () => {
   
     try {
       await emailjs.sendForm(
-        "service_49rhv4v",
-        "template_2oflncg",
+        "service_oxqlhnq",
+        "template_a94o16i",
         e.currentTarget,
-        "IRAqAz_at_pmtz6Na"
+        "oF8jd-_4DfsCuLam8"
       );
       
       setShowModal(true);

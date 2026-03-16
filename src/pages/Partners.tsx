@@ -6,11 +6,11 @@ import SectionHeading from "@/components/SectionHeading";
 
 const partners = [
   { name: "Zoho", desc: "Leading dialer and communication platform for outbound sales teams worldwide.", category: "Dialer Technology" },
-  { name: "Teleforce", desc: "Cloud communication solutions powering businesses across industries.", category: "Cloud Communications" },
+  { name: "SalesNayak", desc: "Cloud communication solutions powering businesses across industries.", category: "Cloud Communications" },
   { name: "TeleCMI", desc: "Enterprise-grade cloud telephony and contact center platform.", category: "Contact Center" },
   { name: "CRMgrow", desc: "All-in-one CRM and sales automation for growing businesses.", category: "CRM Platform" },
-  { name: "Salesforce", desc: "The world's #1 CRM platform for sales, service, marketing, and more.", category: "Enterprise CRM" },
-  { name: "More Partners", desc: "We continuously expand our partner ecosystem to deliver the best solutions.", category: "Growing Network" },
+  { name: "YellowBuddy", desc: "The world's #1 CRM platform for sales, service, marketing, and more.", category: "Enterprise CRM" },
+  { name: "WaGuru", desc: "We continuously expand our partner ecosystem to deliver the best solutions.", category: "Growing Network" },
 ];
 
 const benefits = [
